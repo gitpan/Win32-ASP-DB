@@ -1,3 +1,22 @@
+############################################################################
+#
+# Win32::ASP::DBRecord - an abstract parent class for representing database
+#                        records in the Win32-ASP-DB system
+#
+# Author: Toby Everett
+# Revision: 0.02
+# Last Change:
+############################################################################
+# Copyright 1999, 2000 Toby Everett.  All rights reserved.
+#
+# This file is distributed under the Artistic License. See
+# http://www.ActiveState.com/corporate/artistic_license.htm or
+# the license that comes with your perl distribution.
+#
+# For comments, questions, bugs or general interest, feel free to
+# contact Toby Everett at teverett@alascom.att.com
+############################################################################
+
 use Win32::ASP::Action;
 use Win32::ASP::Field;
 use Error qw/:try/;
@@ -15,7 +34,7 @@ Win32::ASP::DBRecord - an abstract parent class for representing database record
 
 =head1 DESCRIPTION
 
-The main purpose of C<Win32::ASP::DBRecord >is to be subclassed.  It implements a generic set of
+The main purpose of C<Win32::ASP::DBRecord>is to be subclassed.  It implements a generic set of
 default behavior for the purpose of reading a record from a table, displaying that record in HTML,
 allowing edits to it, and writing that record back to the table.  It relies heavily upon
 Win32::ASP::Field objects, which are used to provide an object-oriented interface to the most
@@ -64,8 +83,8 @@ These class methods will be overridden in every child class.
 
 =item _DB
 
-The C<_DB> method should return the C<Win32::DB> (or subclass there-of) object that is used for
-database access.  A frequent implementation looks like this:
+The C<_DB> method should return the C<Win32::ASP::DB> (or subclass there-of) object that is used
+for database access.  A frequent implementation looks like this:
 
   sub _DB {
     return $main::TheDB;
@@ -74,7 +93,7 @@ database access.  A frequent implementation looks like this:
 =cut
 
 sub _DB {
-  return;
+  return $main::TheDB;
 }
 
 =item _FRIENDLY
